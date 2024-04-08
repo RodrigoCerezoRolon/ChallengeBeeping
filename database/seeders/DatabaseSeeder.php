@@ -18,5 +18,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        \App\Models\Product::factory(10)->create();
+        \App\Models\Order::factory(20)->create()->each(function ($order) {
+            // Por cada orden, crear 2 líneas de pedido
+            $order->lines()->saveMany(\App\Models\OrdersLine::factory(2)->make());
+        });
     }
 }
