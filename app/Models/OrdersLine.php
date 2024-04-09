@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class OrdersLine extends Model
 {
     use HasFactory;
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
